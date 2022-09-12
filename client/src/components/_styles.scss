@@ -1,0 +1,22 @@
+.video-cards {
+  width: 75%;
+  .video-grid {
+    width: 100%;
+  }
+  .video-player {
+    width: 550px;
+  }
+}
+
+.options {
+  width: 75%;
+  .options-card {
+    width: 100%;
+  }
+  h3 {
+    font-weight: bold;
+  }
+  .form-btn {
+    line-height: 25px !important;
+  }
+}
