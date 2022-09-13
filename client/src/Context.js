@@ -30,10 +30,8 @@ const ContextProvider = ({ children }) => {
 
     socket.on("callUser", ({ from, name: callerName, signal }) => {
       setCall({ isReceivingCall: true, from, name: callerName, signal });
-      console.log("call", call);
     });
   }, []);
-
   const answerCall = () => {
     setCallAccepted(true);
 
@@ -55,21 +53,17 @@ const ContextProvider = ({ children }) => {
   const callUser = (id) => {
     console.log("calling");
     const peer = new Peer({ initiator: true, trickle: false, stream });
-    console.log(peer);
 
     peer.on("signal", (data) => {
-      console.log("here", data);
       socket.emit("callUser", {
         userToCall: id,
         signalData: data,
         from: currentUser,
         name,
       });
-      console.log("stuff", id, currentUser, name);
     });
 
     peer.on("stream", (currentStream) => {
-      console.log("first");
       recipientVideo.current.srcObject = currentStream;
     });
 

@@ -1,10 +1,15 @@
 import React from "react";
 
-const TopNav = () => {
+const TopNav = ({ children }) => {
   return (
-    <nav className="uk-navbar-container uk-padding-small uk-navbar uk-margin">
-      <div className="uk-navbar-center">Video Chat</div>
-    </nav>
+    <div>
+      <nav className="uk-navbar-container uk-padding-small uk-navbar uk-margin">
+        <div className="uk-navbar-center">
+          <h3>Video Chat</h3>
+        </div>
+      </nav>
+      {children}
+    </div>
   );
 };
 

@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import Notifications from "./Notifications";
+import { GitHub, Copy, PhoneMissed, PhoneOutgoing } from "react-feather";
 import { SocketContext } from "../Context";
 import "./_styles.scss";
 
-const SideNav = ({ children }) => {
+const SideNav = () => {
   const {
     currentUser,
     callAccepted,
@@ -17,7 +17,7 @@ const SideNav = ({ children }) => {
   const [idToCall, setIdToCall] = useState("");
 
   return (
-    <div className="uk-margin uk-container uk-flex uk-flex-center uk-flex-column uk-flex-middle options">
+    <div className="uk-margin uk-margin-bottom uk-container uk-flex uk-flex-center uk-flex-column uk-flex-middle options">
       <div className="uk-card uk-card-default uk-card-body options-card">
         <form action="" noValidate autoComplete="off">
           <div
@@ -28,14 +28,21 @@ const SideNav = ({ children }) => {
               <h3 htmlFor="name">Account Info</h3>
               <input
                 type="text"
+                placeholder="Enter your name"
+                className="uk-input"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                required
               />
-              <CopyToClipboard text={currentUser} className="uk-margin-top">
+              <CopyToClipboard
+                text={currentUser}
+                className="uk-margin-top uk-button form-btn uk-button-primary"
+              >
                 <button
                   className="uk-button form-btn uk-button-primary"
                   type="button"
                 >
+                  <Copy className="uk-margin-right" />
                   Copy Your ID
                 </button>
               </CopyToClipboard>
@@ -44,8 +51,11 @@ const SideNav = ({ children }) => {
               <h3 htmlFor="idToCall">Make a call</h3>
               <input
                 type="text"
+                className="uk-input"
+                placeholder="Enter ID to call"
                 value={idToCall}
                 onChange={(e) => setIdToCall(e.target.value)}
+                required
               />
 
               {callAccepted && !callEnded ? (
@@ -54,7 +64,7 @@ const SideNav = ({ children }) => {
                   type="button"
                   onClick={leaveCall}
                 >
-                  Hang Up
+                  <PhoneMissed className="uk-margin-right" /> Hang Up
                 </button>
               ) : (
                 <button
@@ -62,7 +72,7 @@ const SideNav = ({ children }) => {
                   type="button"
                   onClick={() => callUser(idToCall)}
                 >
-                  Call
+                  <PhoneOutgoing className="uk-margin-right" /> Call
                 </button>
               )}
             </div>

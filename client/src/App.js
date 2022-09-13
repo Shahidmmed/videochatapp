@@ -7,12 +7,12 @@ import Notifications from "./components/Notifications";
 
 const App = () => {
   return (
-    <div>
-      <TopNav />
-      <VideoCard />
-      <SideNav>
+    <div className="app" data-uk-height-viewport="expand: true">
+      <TopNav>
         <Notifications />
-      </SideNav>
+      </TopNav>
+      <VideoCard />
+      <SideNav />
     </div>
   );
 };
