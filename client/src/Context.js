@@ -1,10 +1,11 @@
 import React, { createContext, useState, useRef, useEffect } from "react";
 import { io } from "socket.io-client";
 import Peer from "simple-peer";
+import { serverUrl } from "./env";
 
 const SocketContext = createContext();
 
-const socket = io("http://localhost:5000");
+const socket = io(serverUrl);
 
 const ContextProvider = ({ children }) => {
   const [callAccepted, setCallAccepted] = useState(false);
@@ -32,6 +33,7 @@ const ContextProvider = ({ children }) => {
       setCall({ isReceivingCall: true, from, name: callerName, signal });
     });
   }, []);
+
   const answerCall = () => {
     setCallAccepted(true);
 

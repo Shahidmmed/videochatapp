@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { GitHub, Copy, PhoneMissed, PhoneOutgoing } from "react-feather";
+import { Copy, PhoneMissed, PhoneOutgoing } from "react-feather";
 import { SocketContext } from "../Context";
 import "./_styles.scss";
 
